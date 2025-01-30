@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="../CSS/dashboardPage.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="userInfoDiv">
+          <img
+            src="../Images/user_icon.png"
+            alt="User Profile Picture"
+            class="userIcon"
+          />
+          <span class="userName">Mohammad Ali</span>
+        </div>
+        <div class="header-right">
+          <div class="searchDiv">
+            <button class="searchBtn">
+              <img src="../Images/search_icon.png" alt="Search Button">
+            </button>
+          </div>
+          <div class="notificationDiv">
+            <img
+              src="../Images/notification_icon.png"
+              alt="Notification Icon"
+            />
+          </div>
+          <div class="mode">
+            <button class="lightMode">
+              <div class="icon-circle">
+                <img src="../Images/light_icon.png" alt="Light mode" />
+              </div>
+            </button>
+            <button class="darkMode">
+              <div class="icon-circle">
+                <img src="../Images/dark_icon.png" alt="Dark mode" />
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="sidebar">
+          <div class="navigationButtons">
+            <button class="clickable-button">
+              <img
+                src="../Images/dashboard_icon.png"
+                alt="Button Icon"
+                class="button-icon"
+              />
+              <span class="button-text">Dashboard</span>
+            </button>
+
+            <button class="clickable-button">
+              <img
+                src="../Images/calander_icon.png"
+                alt="Button Icon"
+                class="button-icon"
+              />
+              <span class="button-text">Calander</span>
+            </button>
+
+            <button class="clickable-button">
+              <img
+                src="../Images/task_icon.png"
+                alt="Button Icon"
+                class="button-icon"
+              />
+              <span class="button-text">Tasks</span>
+            </button>
+          </div>
+          <div class="calanderDiv"></div>
+          <div class="tasksDiv"></div>
+        </div>
+        <div class="mainDiv">
+          <div class="topTasksDiv">
+            <h2>Top priorities!</h2>
+          </div>
+          <div class="bottomDivs">
+            <div class="upcoimgTasksDiv">
+              <h2>Upcoming Tasks</h2>
+            </div>
+            <div class="calendarDiv">
+              <h2>Calendar</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

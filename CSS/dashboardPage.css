@@ -1,0 +1,217 @@
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.container {
+  background-color: #ffffff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* All divs should align vertically */
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between; /* Space out the userInfoDiv and the right-aligned divs */
+  align-items: center; /* Vertically center the items */
+  padding: 10px 20px; /* Add padding for better spacing */
+}
+
+.header-right {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 20px; /* Add spacing between mode and notification divs */
+}
+
+.content {
+  display: flex;
+  flex: 1; /* Take the remaining space */
+  gap: 20px;
+}
+
+.sidebar {
+  background-color: #ffffff;
+  width: 20%;
+  /*padding: 1rem;*/
+}
+
+/* Main content area */
+.mainDiv {
+  flex: 1;
+  background-color: #f2f2f7;
+  padding: 20px; /* Consistent padding */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Add spacing between children */
+  border-radius: 10px;
+}
+
+/* Top tasks div */
+.topTasksDiv {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px; /* Add rounded corners */
+  flex: 0.7; /* Share the available space equally */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bottom divs container */
+.bottomDivs {
+  display: flex;
+  flex: 1; /* Take up remaining space */
+  gap: 1rem; 
+}
+
+/* Upcoming tasks and calendar divs */
+.upcoimgTasksDiv,
+.calendarDiv {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px; 
+  flex: 1; /* Share the available space equally */
+  display: flex;
+  flex-direction: column;
+}
+
+.userInfoDiv{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.userIcon {
+  width: 50px;
+  height: auto;
+  object-fit: cover;
+
+}
+
+.userName{
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+button {
+  border: none; /* Remove default border */
+  background: none; /* Remove default background */
+  padding: 0; /* Remove default padding */
+  font-family: inherit; /* Use the same font as the rest of the page */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.clickable-button {
+  display: flex; /* Use Flexbox for alignment */
+  align-items: center; /* Vertically center the icon and text */
+  gap: 10px; /* Add spacing between the icon and text */
+  padding: 10px 20px; /* Add padding for better spacing */
+  background-color: transparent; /* Transparent background */
+  border-radius: 10px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  margin:0; 
+}
+
+/* Icon styling */
+.button-icon {
+  width: 36px; /* Set icon width */
+  height: auto;
+  object-fit: cover; /* Ensure the icon fits properly */
+}
+
+/* Text styling */
+.button-text {
+  font-size: 24px; /* Set font size */
+  color: #333; /* Set text color */
+  font-family: 'Lucida Sans';
+}
+
+/* Hover effect */
+.clickable-button:hover {
+  background-color: #8777F2;
+}
+
+.clickable-button:hover .button-text{
+  color: #ffffff;
+}
+
+/* Ensure the first button aligns with the content div border */
+.navigationButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 35px; /* Add spacing between buttons */
+  padding: 0;  /*Remove padding to align with the border */
+}
+
+.mode {
+  background-color: #f2f2f7;
+  padding: 10px;
+  display: flex;
+  gap: 10px; /* Add spacing between light and dark mode buttons */
+  border-radius: 50px; /* Rounded corners */
+}
+
+/* Styles for the lightMode button with a white circle */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.icon-circle img {
+  width: 30px; /* Adjust the icon size */
+  height: 30px;
+}
+
+.notificationDiv {
+  background-color: #f2f2f7;
+  padding: 20px;
+  border-radius: 50px; /* Rounded corners */
+}
+
+.notificationDiv img {
+  width: 30px; 
+  height: 30px;
+  cursor: pointer;
+}
+
+.searchDiv {
+  background-color: #f2f2f7; /* Background color */
+  padding: 10px; /* Adjust padding */
+  border-radius: 50px; /* Rounded corners for the container */
+  display: flex;
+  align-items: center; /* Center the icon vertically */
+  justify-content: flex-start; /* Align the icon to the left */
+  width: 300px; /* Set a fixed width */
+  height: 60px; /* Set a fixed height */
+}
+
+.searchBtn {
+  cursor: pointer; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white; 
+  padding: 20px; 
+  border-radius: 50%; 
+}
+
+.searchBtn img {
+  width: 24px; /* Set icon size (make it square) */
+  height: 24px; /* Ensure the icon is square */
+}
+
+
+
+
+
