@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Tracker</title>
     <link rel="stylesheet" href="../CSS/dashboardPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
@@ -17,10 +21,19 @@
           />
           <span class="userName">Mohammad Ali</span>
         </div>
+        <div class="date-navigation">
+          <button class="date-navigation__arrow date-navigation__arrow--left" aria-label="Previous Month">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <span class="date-navigation__text">June, 2025</span>
+          <button class="date-navigation__arrow date-navigation__arrow--right" aria-label="Next Month">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
         <div class="header-right">
           <div class="searchDiv">
             <button class="searchBtn">
-              <img src="../Images/search_icon.png" alt="Search Button">
+              <img src="../Images/search_icon.png" alt="Search Button" />
             </button>
           </div>
           <div class="notificationDiv">
