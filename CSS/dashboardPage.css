@@ -20,9 +20,13 @@ body {
   justify-content: space-between; /* Space out the userInfoDiv and the right-aligned divs */
   align-items: center; /* Vertically center the items */
   padding: 10px 20px; /* Add padding for better spacing */
+  top: -25px;
+  position: relative;
 }
 
 .header-right {
+  width:700px;
+  flex-shrink: 0; /*This prevent the divs from shrinking*/
   display: flex;
   align-items: center; /* Align items vertically */
   gap: 20px; /* Add spacing between mode and notification divs */
@@ -37,7 +41,12 @@ body {
 .sidebar {
   background-color: #ffffff;
   width: 20%;
-  /*padding: 1rem;*/
+}
+
+.remotePicDiv{
+  margin-top: 40px;
+  transform: scaleX(-1);
+  margin-right: 20px;
 }
 
 /* Main content area */
@@ -65,7 +74,7 @@ body {
 .bottomDivs {
   display: flex;
   flex: 1; /* Take up remaining space */
-  gap: 1rem; 
+  gap: 1rem;
 }
 
 /* Upcoming tasks and calendar divs */
@@ -73,29 +82,33 @@ body {
 .calendarDiv {
   background-color: #ffffff;
   padding: 1rem;
-  border-radius: 10px; 
+  border-radius: 10px;
   flex: 1; /* Share the available space equally */
   display: flex;
   flex-direction: column;
 }
 
-.userInfoDiv{
+.userInfoDiv {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 50px;
+  width: 250px;
+  flex-shrink: 0;
 }
 
 .userIcon {
   width: 50px;
   height: auto;
   object-fit: cover;
-
 }
 
-.userName{
+.userName {
   font-size: 24px;
   font-weight: bolder;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }
 
 button {
@@ -112,9 +125,9 @@ button {
   gap: 10px; /* Add spacing between the icon and text */
   padding: 10px 20px; /* Add padding for better spacing */
   background-color: transparent; /* Transparent background */
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 20px; /* Rounded corners */
   transition: all 0.3s ease; /* Smooth transition for hover effect */
-  margin:0; 
+  margin: 0;
 }
 
 /* Icon styling */
@@ -128,16 +141,25 @@ button {
 .button-text {
   font-size: 24px; /* Set font size */
   color: #333; /* Set text color */
-  font-family: 'Lucida Sans';
+  font-family: "Lucida Sans";
 }
 
 /* Hover effect */
 .clickable-button:hover {
-  background-color: #8777F2;
+  background-color: #8777f2;
 }
 
-.clickable-button:hover .button-text{
+.clickable-button:hover .button-text {
   color: #ffffff;
+}
+
+/* Adjust the logout button*/
+.remotePicDiv + .clickable-button{
+margin-top: 40px;
+}
+
+.remotePicDiv + .clickable-button:hover{
+  background-color: rgb(250, 83, 83);
 }
 
 /* Ensure the first button aligns with the content div border */
@@ -145,7 +167,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 35px; /* Add spacing between buttons */
-  padding: 0;  /*Remove padding to align with the border */
+  padding: 0; /*Remove padding to align with the border */
 }
 
 .mode {
@@ -180,7 +202,7 @@ button {
 }
 
 .notificationDiv img {
-  width: 30px; 
+  width: 30px;
   height: 30px;
   cursor: pointer;
 }
@@ -197,13 +219,13 @@ button {
 }
 
 .searchBtn {
-  cursor: pointer; 
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white; 
-  padding: 20px; 
-  border-radius: 50%; 
+  background-color: white;
+  padding: 20px;
+  border-radius: 50%;
 }
 
 .searchBtn img {
@@ -215,10 +237,9 @@ button {
 .date-navigation {
   display: flex;
   align-items: center;
-  justify-content: center; 
-  position: relative; 
-  /*margin-left: auto;  Push to the right */
-  /*margin-right: auto; /* Center the date-navigation container */
+  justify-content: center;
+  position: relative;
+  flex-grow: 1;
   padding: 0 10rem; /* Add padding to prevent text from overlapping arrows */
   width: 100%; /* Ensure the container takes up available space */
 }
@@ -240,10 +261,13 @@ button {
 
 /* Right Arrow */
 .date-navigation__arrow--right {
-  right: 1rem; /* Position at a fixed distance from the right */
+  right: 2rem; /* Position at a fixed distance from the right */
 }
 
-/* Date Text */
+.date-navigation__arrow:hover{
+  color: blue;
+}
+
 /* Date Text */
 .date-navigation__text {
   font-size: 36px;
