@@ -1,89 +1,121 @@
+/* Define CSS variables for light mode */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --mode-background: #f2f2f7;
+  --main-div-background: #f2f2f7;
+  --card-background: #ffffff;
+  --button-hover-color: #8777f2;
+  --button-text-color: #333;
+  --notification-background: #f2f2f7;
+  --search-background: #f2f2f7;
+  --icon-circle-background: white;
+  --date-navigation-color: #333;
+  --date-navigation-hover-color: #8777f2;
+}
+
+/* Override CSS variables for dark mode */
+.dark-mode {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --mode-background: #333333;
+  --main-div-background: #1e1e1e;
+  --card-background: #333333;
+  --button-hover-color: #6b5fcf;
+  --button-text-color: #ffffff;
+  --notification-background: #333333;
+  --search-background: #333333;
+  --icon-circle-background: #444444;
+  --date-navigation-color: #ffffff;
+  --date-navigation-hover-color: #a8a8ff;
+}
+
+/* Apply CSS variables to elements */
 body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: "Times New Roman", Times, serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 .container {
-  background-color: #ffffff;
+  background-color: var(--background-color);
   height: 100vh;
   display: flex;
-  flex-direction: column; /* All divs should align vertically */
+  flex-direction: column;
   padding: 40px;
   box-sizing: border-box;
 }
 
 .header {
-  background-color: #ffffff;
+  background-color: var(--background-color);
   display: flex;
-  justify-content: space-between; /* Space out the userInfoDiv and the right-aligned divs */
-  align-items: center; /* Vertically center the items */
-  padding: 10px 20px; /* Add padding for better spacing */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   top: -25px;
   position: relative;
 }
 
 .header-right {
-  width:700px;
-  flex-shrink: 0; /*This prevent the divs from shrinking*/
+  width: 700px;
+  flex-shrink: 0;
   display: flex;
-  align-items: center; /* Align items vertically */
-  gap: 20px; /* Add spacing between mode and notification divs */
+  align-items: center;
+  gap: 20px;
 }
 
 .content {
   display: flex;
-  flex: 1; /* Take the remaining space */
+  flex: 1;
   gap: 20px;
 }
 
 .sidebar {
-  background-color: #ffffff;
+  background-color: var(--background-color);
   width: 20%;
 }
 
-.remotePicDiv{
+.remotePicDiv {
   margin-top: 40px;
   transform: scaleX(-1);
   margin-right: 20px;
 }
 
-/* Main content area */
 .mainDiv {
   flex: 1;
-  background-color: #f2f2f7;
-  padding: 20px; /* Consistent padding */
+  background-color: var(--main-div-background);
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Add spacing between children */
+  gap: 1rem;
   border-radius: 10px;
 }
 
-/* Top tasks div */
 .topTasksDiv {
-  background-color: #ffffff;
+  background-color: var(--card-background);
   padding: 1rem;
-  border-radius: 10px; /* Add rounded corners */
-  flex: 0.7; /* Share the available space equally */
+  border-radius: 10px;
+  flex: 0.7;
   display: flex;
   flex-direction: column;
 }
 
-/* Bottom divs container */
 .bottomDivs {
   display: flex;
-  flex: 1; /* Take up remaining space */
+  flex: 1;
   gap: 1rem;
 }
 
-/* Upcoming tasks and calendar divs */
 .upcoimgTasksDiv,
 .calendarDiv {
-  background-color: #ffffff;
+  background-color: var(--card-background);
   padding: 1rem;
   border-radius: 10px;
-  flex: 1; /* Share the available space equally */
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -112,77 +144,71 @@ body {
 }
 
 button {
-  border: none; /* Remove default border */
-  background: none; /* Remove default background */
-  padding: 0; /* Remove default padding */
-  font-family: inherit; /* Use the same font as the rest of the page */
-  cursor: pointer; /* Change cursor to pointer */
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .clickable-button {
-  display: flex; /* Use Flexbox for alignment */
-  align-items: center; /* Vertically center the icon and text */
-  gap: 10px; /* Add spacing between the icon and text */
-  padding: 10px 20px; /* Add padding for better spacing */
-  background-color: transparent; /* Transparent background */
-  border-radius: 20px; /* Rounded corners */
-  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border-radius: 20px;
+  transition: all 0.3s ease;
   margin: 0;
 }
 
-/* Icon styling */
 .button-icon {
-  width: 36px; /* Set icon width */
+  width: 36px;
   height: auto;
-  object-fit: cover; /* Ensure the icon fits properly */
+  object-fit: cover;
 }
 
-/* Text styling */
 .button-text {
-  font-size: 24px; /* Set font size */
-  color: #333; /* Set text color */
+  font-size: 24px;
+  color: var(--button-text-color);
   font-family: "Lucida Sans";
 }
 
-/* Hover effect */
 .clickable-button:hover {
-  background-color: #8777f2;
+  background-color: var(--button-hover-color);
 }
 
 .clickable-button:hover .button-text {
-  color: #ffffff;
+  color: var(--text-color);
 }
 
-/* Adjust the logout button*/
-.remotePicDiv + .clickable-button{
-margin-top: 40px;
+.remotePicDiv + .clickable-button {
+  margin-top: 40px;
 }
 
-.remotePicDiv + .clickable-button:hover{
+.remotePicDiv + .clickable-button:hover {
   background-color: rgb(250, 83, 83);
 }
 
-/* Ensure the first button aligns with the content div border */
 .navigationButtons {
   display: flex;
   flex-direction: column;
-  gap: 35px; /* Add spacing between buttons */
-  padding: 0; /*Remove padding to align with the border */
+  gap: 35px;
+  padding: 0;
 }
 
 .mode {
-  background-color: #f2f2f7;
+  background-color: var(--mode-background);
   padding: 10px;
   display: flex;
-  gap: 10px; /* Add spacing between light and dark mode buttons */
-  border-radius: 50px; /* Rounded corners */
+  gap: 20px;
+  border-radius: 50px;
 }
 
-/* Styles for the lightMode button with a white circle */
 .icon-circle {
   width: 60px;
   height: 60px;
-  background-color: white;
+  background-color: var(--icon-circle-background);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -191,14 +217,19 @@ margin-top: 40px;
 }
 
 .icon-circle img {
-  width: 30px; /* Adjust the icon size */
+  width: 30px;
   height: 30px;
 }
 
+/* Change the color of the selected mode button */
+.mode button.active .icon-circle {
+  background-color: #8777f2; 
+} 
+
 .notificationDiv {
-  background-color: #f2f2f7;
+  background-color: var(--notification-background);
   padding: 20px;
-  border-radius: 50px; /* Rounded corners */
+  border-radius: 50px;
 }
 
 .notificationDiv img {
@@ -208,14 +239,14 @@ margin-top: 40px;
 }
 
 .searchDiv {
-  background-color: #f2f2f7; /* Background color */
-  padding: 10px; /* Adjust padding */
-  border-radius: 50px; /* Rounded corners for the container */
+  background-color: var(--search-background);
+  padding: 10px;
+  border-radius: 50px;
   display: flex;
-  align-items: center; /* Center the icon vertically */
-  justify-content: flex-start; /* Align the icon to the left */
-  width: 400px; /* Set a fixed width */
-  height: 60px; /* Set a fixed height */
+  align-items: center;
+  justify-content: flex-start;
+  width: 400px;
+  height: 60px;
 }
 
 .searchBtn {
@@ -223,60 +254,55 @@ margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: var(--icon-circle-background);
   padding: 20px;
   border-radius: 50%;
 }
 
 .searchBtn img {
-  width: 24px; /* Set icon size (make it square) */
-  height: 24px; /* Ensure the icon is square */
+  width: 24px;
+  height: 24px;
 }
 
-/* Date Navigation Section */
 .date-navigation {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   flex-grow: 1;
-  padding: 0 10rem; /* Add padding to prevent text from overlapping arrows */
-  width: 100%; /* Ensure the container takes up available space */
+  padding: 0 10rem;
+  width: 100%;
 }
 
-/* Arrow Buttons */
 .date-navigation__arrow {
   cursor: pointer;
   font-size: 2rem;
-  color: #333;
-  position: absolute; /* Fix the arrows in place */
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%); /* Adjust for exact vertical centering */
+  color: var(--date-navigation-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/* Left Arrow */
 .date-navigation__arrow--left {
-  left: 15rem; /* Position at a fixed distance from the left */
+  left: 15rem;
 }
 
-/* Right Arrow */
 .date-navigation__arrow--right {
-  right: 2rem; /* Position at a fixed distance from the right */
+  right: 2rem;
 }
 
-.date-navigation__arrow:hover{
-  color: blue;
+.date-navigation__arrow:hover {
+  color: var(--date-navigation-hover-color);
 }
 
-/* Date Text */
 .date-navigation__text {
   font-size: 36px;
   font-weight: bold;
-  color: #333;
+  color: var(--date-navigation-color);
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Add ellipsis if text overflows */
-  position: absolute; /* Fix the text in place */
-  left: calc(50% + 7rem); /* Adjust for arrow positions */
-  transform: translateX(-50%); /* Center the text */
+  text-overflow: ellipsis;
+  position: absolute;
+  left: calc(50% + 7rem);
+  transform: translateX(-50%);
 }
