@@ -9,6 +9,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lexend"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
@@ -113,7 +117,54 @@
           </div>
           <div class="bottomDivs">
             <div class="upcoimgTasksDiv">
-              <h2>Upcoming Tasks</h2>
+              <div class="upcoimgTasksDivHeading">
+                <h2>Upcoming Tasks</h2>
+                <button class="addTaskButton">
+                  <img src="../Images/plus_icon.png" alt="Add task" />
+                </button>
+              </div>
+
+              <form id="addTaskForm">
+                <h2>Add a new task...</h2>
+                <input
+                  name="taskName"
+                  id="taskName"
+                  type="text"
+                  placeholder="Task name"
+                  required
+                />
+                <hr />
+                <input
+                  type="textarea"
+                  id="taskDesc"
+                  name="taskDesc"
+                  placeholder="Task description"
+                  required
+                />
+                <label for="taskDate">Choose Date</label>
+                <input type="date" id="dateInput" />
+
+                <label id="chooseTimeLabel" for="chooseTime">Choose Time</label>
+                <div
+                  class="chooseTimeDiv"
+                  role="radiogroup"
+                  aria-labelledby="chooseTimeLabel"
+                >
+                  <button id="openTimeBtn">Open</button>
+                  <button id="timeSelection">Select Time <input type="time" id="timeInput"/></button>
+                </div>
+
+                <label id="priorityLabel" for="priority">Choose priority</label>
+                <div
+                  class="priorityOptions"
+                  role="radiogroup"
+                  aria-labelledby="priorityLabel"
+                >
+                  <button id="highBtn">High</button>
+                  <button id="midBtn">Mid</button>
+                  <button id="lowBtn">Low</button>
+                </div>
+              </form>
             </div>
             <div class="calendarDiv">
               <h2>Calendar</h2>

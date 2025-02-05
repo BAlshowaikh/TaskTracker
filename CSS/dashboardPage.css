@@ -35,7 +35,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Lexend";
   background-color: var(--background-color);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
@@ -108,16 +108,6 @@ body {
   display: flex;
   flex: 1;
   gap: 1rem;
-}
-
-.upcoimgTasksDiv,
-.calendarDiv {
-  background-color: var(--card-background);
-  padding: 1rem;
-  border-radius: 10px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .userInfoDiv {
@@ -223,8 +213,8 @@ button {
 
 /* Change the color of the selected mode button */
 .mode button.active .icon-circle {
-  background-color: #8777f2; 
-} 
+  background-color: #8777f2;
+}
 
 .notificationDiv {
   background-color: var(--notification-background);
@@ -305,4 +295,172 @@ button {
   position: absolute;
   left: calc(50% + 7rem);
   transform: translateX(-50%);
+}
+
+.calendarDiv {
+  background-color: var(--card-background);
+  padding: 1rem;
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.upcoimgTasksDiv {
+  background-color: var(--card-background);
+  padding: 1rem;
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.upcoimgTasksDivHeading {
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap row;
+  gap: 30px;
+}
+
+.upcoimgTasksDivHeading h2 {
+  display: inline;
+}
+
+.addTaskButton {
+  display: inline;
+  float: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.addTaskButton img {
+  width: 48px;
+  height: 48px;
+}
+
+/* Style for the form */
+#addTaskForm {
+  flex-direction: column;
+  width: 300px;
+  height: auto;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 24px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  display: none;
+}
+
+#addTaskForm label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+#taskName {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+#taskName::placeholder {
+  font-size: 18px;
+}
+
+#taskName:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+#taskDesc {
+  border: none;
+  padding-bottom: 40px;
+}
+
+#taskDesc::placeholder {
+  font-size: 18px;
+  padding-top: 100px;
+}
+
+#taskDesc:focus {
+  border: none;
+  outline: none;
+}
+
+#dateInput {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  background-color: #f2f2f7;
+  border: solid 0.5px black;
+  cursor: pointer;
+}
+
+.chooseTimeDiv {
+  display: flex;
+  background-color: #f2f2f2;
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.chooseTimeDiv button {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  color: #3c3c4399;
+}
+
+.chooseTimeDiv button.active {
+  background-color:white;
+  font-weight: bold;
+}
+
+#timeSelection input[type="time"] {
+  display: none; 
+}
+
+#timeSelection.active input[type="time"] {
+  display: inline; 
+  cursor: pointer;
+}
+
+.priorityOptions {
+  display: flex;
+  background-color: #f2f2f2;
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.priorityOptions button {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  color: #3c3c4399;
+}
+
+.priorityOptions button.active {
+  background-color: white;
+  font-weight: bold;
 }
