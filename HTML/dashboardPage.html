@@ -125,12 +125,11 @@
               </div>
 
               <form id="addTaskForm">
-                <h2>Add a new task...</h2>
                 <input
                   name="taskName"
                   id="taskName"
                   type="text"
-                  placeholder="Task name"
+                  placeholder="Title of the task.."
                   required
                 />
                 <hr />
@@ -151,7 +150,9 @@
                   aria-labelledby="chooseTimeLabel"
                 >
                   <button id="openTimeBtn">Open</button>
-                  <button id="timeSelection">Select Time <input type="time" id="timeInput"/></button>
+                  <button id="timeSelection">
+                    Select Time <input type="time" id="timeInput" />
+                  </button>
                 </div>
 
                 <label id="priorityLabel" for="priority">Choose priority</label>
@@ -164,6 +165,14 @@
                   <button id="midBtn">Mid</button>
                   <button id="lowBtn">Low</button>
                 </div>
+
+                <label id="categoryLabel" for="category">Choose Category</label>
+                <div
+                  class="categoryOptions"
+                  role="radiogroup"
+                  aria-labelledby="categoryLabel"
+                ></div>
+                <button class="addTaskSubmitBtn">Add task</button>
               </form>
             </div>
             <div class="calendarDiv">

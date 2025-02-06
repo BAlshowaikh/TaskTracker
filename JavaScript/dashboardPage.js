@@ -127,3 +127,46 @@ document.addEventListener("DOMContentLoaded", function() {
 
   buttons.forEach(button => button.addEventListener("click", handleButtonClick));
 });
+
+// Code for choosing a category
+// Array of categories with their colors
+const categories = [
+  { name: 'Work', color: '#ffcccb' }, // Light red
+  { name: 'Health', color: '#90ee90' }, // Light green
+  { name: 'Family', color: '#add8e6' }, // Light blue
+  { name: 'Spirituality', color: '#dda0dd' }, // Light purple
+  // Add more categories as needed
+];
+
+// Get the container for category buttons
+const categoryOptions = document.querySelector('.categoryOptions');
+
+// Function to create a category button
+function createCategoryButton(category) {
+  const button = document.createElement('button');
+  button.className = 'categoryBtn';
+  button.textContent = category.name;
+  button.style.backgroundColor = category.color; // Set the background color
+  button.setAttribute('data-category', category.name.toLowerCase()); // Add data attribute
+
+  // Add click event listener
+  button.addEventListener('click', () => {
+    // Remove the selected class from all buttons
+    document.querySelectorAll('.categoryBtn').forEach(btn => btn.classList.remove('selected'));
+
+    // Add the selected class to the clicked button
+    button.classList.add('selected');
+
+    // Optionally, save the selected category to a hidden input or variable
+    const selectedCategory = button.getAttribute('data-category');
+    console.log('Selected Category:', selectedCategory);
+  });
+
+  return button;
+}
+
+// Dynamically add category buttons to the form
+categories.forEach(category => {
+  const button = createCategoryButton(category);
+  categoryOptions.appendChild(button);
+});

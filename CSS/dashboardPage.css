@@ -362,8 +362,10 @@ button {
 
 #addTaskForm label {
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
+
 #taskName {
   border: none;
   border-bottom: 1px solid black;
@@ -371,6 +373,7 @@ button {
 
 #taskName::placeholder {
   font-size: 18px;
+  font-weight: bold;
 }
 
 #taskName:focus {
@@ -428,6 +431,7 @@ button {
 .chooseTimeDiv button.active {
   background-color:white;
   font-weight: bold;
+  border: 2px solid black;
 }
 
 #timeSelection input[type="time"] {
@@ -463,4 +467,40 @@ button {
 .priorityOptions button.active {
   background-color: white;
   font-weight: bold;
+  border: 2px solid black;
+}
+
+.categoryOptions {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px; 
+  margin-bottom: 20px;
+}
+
+.categoryBtn {
+  width: 120px; 
+  height: 40px; 
+  border-radius: 20px; 
+  border: 2px solid transparent; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Selected state */
+.categoryBtn.selected {
+  border-color: #000;
+  transform: scale(1.1); 
+}
+
+.addTaskSubmitBtn{
+  display: inline-block;
+  background-color: #8777f2;
+  color: white;
+  border-radius: 6px;
+  height: 40px;
+  font-size: 18px;
 }
