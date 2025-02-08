@@ -360,6 +360,7 @@ button {
   display: none;
 }
 
+
 #addTaskForm label {
   font-size: 16px;
   margin-bottom: 10px;
@@ -503,4 +504,72 @@ button {
   border-radius: 6px;
   height: 40px;
   font-size: 18px;
+}
+
+/* Style for adding a new task div */
+.taskItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--card-background);
+  border-radius: 20px; 
+  margin-bottom: 20px; 
+  background-color: #F2F2F7;
+}
+
+.task-seperator{
+  width: 3px;
+  height: 100%;
+  background-color: #8A8A8E;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Time */
+.taskItem .taskTime {
+  font-size: 22px;
+  color: #333;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+/* Task Name */
+.taskItem .taskName {
+  flex: 1; 
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Priority Circle */
+.taskItem .priorityCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%; 
+  margin-right: 50px;
+}
+
+/* Priority Colors */
+.taskItem .priorityCircle.high {
+  background-color: darkred; 
+}
+
+.taskItem .priorityCircle.mid {
+  background-color: red; 
+}
+
+.taskItem .priorityCircle.low {
+  background-color: lightcoral; 
+}
+
+.taskItem .icon-container{
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.icon-container img {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }

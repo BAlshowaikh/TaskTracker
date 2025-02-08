@@ -1,5 +1,5 @@
-// Code for date-navigation div
 document.addEventListener("DOMContentLoaded", function () {
+  // Month navigation
   const months = [
     "January, 2025",
     "February, 2025",
@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "December, 2025",
   ];
 
-  let currentMonthIndex = 0; // Start with January, 2025
-
+  let currentMonthIndex = 0;
   const monthDisplay = document.querySelector(".date-navigation__text");
   const leftArrow = document.querySelector(".date-navigation__arrow--left");
   const rightArrow = document.querySelector(".date-navigation__arrow--right");
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     monthDisplay.textContent = months[currentMonthIndex];
   }
 
-  // If user clicks the left arrow
   leftArrow.addEventListener("click", function () {
     if (currentMonthIndex > 0) {
       currentMonthIndex--;
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // If user clicks the right arrow
   rightArrow.addEventListener("click", function () {
     if (currentMonthIndex < months.length - 1) {
       currentMonthIndex++;
@@ -41,132 +38,209 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Initialize the display
   updateMonthDisplay();
-});
 
-// Code for the modes (dark mode, light mode)
-const lightModeBtn = document.querySelector(".lightMode");
-const darkModeBtn = document.querySelector(".darkMode");
-const body = document.body;
+  // Theme management
+  const lightModeBtn = document.querySelector(".lightMode");
+  const darkModeBtn = document.querySelector(".darkMode");
+  const body = document.body;
 
-// Function to set the active button
-function setActiveButton(activeButton, inactiveButton) {
-  activeButton.classList.add("active"); // Add active class to the clicked button
-  inactiveButton.classList.remove("active"); // Remove active class from the other button
-}
+  function setActiveButton(activeButton, inactiveButton) {
+    activeButton.classList.add("active");
+    inactiveButton.classList.remove("active");
+  }
 
-// Light Mode Button
-lightModeBtn.addEventListener("click", () => {
-  body.classList.remove("dark-mode");
-  localStorage.setItem("theme", "light");
-  setActiveButton(lightModeBtn, darkModeBtn); // Set light mode button as active
-});
+  lightModeBtn.addEventListener("click", () => {
+    body.classList.remove("dark-mode");
+    localStorage.setItem("theme", "light");
+    setActiveButton(lightModeBtn, darkModeBtn);
+  });
 
-// Dark Mode Button
-darkModeBtn.addEventListener("click", () => {
-  body.classList.add("dark-mode");
-  localStorage.setItem("theme", "dark");
-  setActiveButton(darkModeBtn, lightModeBtn); // Set dark mode button as active
-});
+  darkModeBtn.addEventListener("click", () => {
+    body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+    setActiveButton(darkModeBtn, lightModeBtn);
+  });
 
-// Check localStorage for saved theme and set the active button
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "dark") {
-  body.classList.add("dark-mode");
-  setActiveButton(darkModeBtn, lightModeBtn); // Set dark mode button as active
-} else {
-  setActiveButton(lightModeBtn, darkModeBtn); // Set light mode button as active
-}
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
+    setActiveButton(darkModeBtn, lightModeBtn);
+  } else {
+    setActiveButton(lightModeBtn, darkModeBtn);
+  }
 
-// Code for displaying the add task form when the plus icon been clicked
-document.addEventListener("DOMContentLoaded", function(){
+  // Add task form toggle
   const addTaskBtn = document.querySelector(".addTaskButton");
   const addTaskForm = document.querySelector("#addTaskForm");
 
-  addTaskBtn.addEventListener("click", () =>{
-    if (addTaskForm.style.display === "none" || addTaskForm.style.display === "") {
-      addTaskForm.style.display = "flex";
-    } else {
-      addTaskForm.style.display = "none";
-    }
-  })
-});
+  addTaskBtn.addEventListener("click", () => {
+    addTaskForm.style.display =
+      addTaskForm.style.display === "flex" ? "none" : "flex";
+  });
 
-// Code for choosing the priority of the added task
-document.addEventListener("DOMContentLoaded", function () {
-  const prioritybuttons = document.querySelectorAll(".priorityOptions button");
-
-  prioritybuttons.forEach((button) => {
+  // Priority selection
+  const priorityButtons = document.querySelectorAll(".priorityOptions button");
+  priorityButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      prioritybuttons.forEach((b) => b.classList.remove("active"));
+      priorityButtons.forEach((b) => b.classList.remove("active"));
       button.classList.add("active");
     });
   });
-});
 
-
-// Code for choosing the time
-document.addEventListener("DOMContentLoaded", function() {
+  // Time selection
   const chooseTimeDiv = document.querySelector(".chooseTimeDiv");
-  const buttons = chooseTimeDiv.querySelectorAll("button");
+  const timeButtons = chooseTimeDiv.querySelectorAll("button");
+  const timeInput = document.getElementById("timeInput");
 
-  // Function to handle button clicks
-  function handleButtonClick(event) {
-    buttons.forEach(button => button.classList.remove("active"));
-
-    event.target.classList.add("active");
-
-    const timeInput = document.getElementById("timeInput");
-    if (event.target.id === "timeSelection") {
-      timeInput.style.display = timeInput.style.display === "none" ? "inline" : "none";
-    } else {
-      timeInput.style.display = "none";
-    }
-  }
-
-  buttons.forEach(button => button.addEventListener("click", handleButtonClick));
-});
-
-// Code for choosing a category
-// Array of categories with their colors
-const categories = [
-  { name: 'Work', color: '#ffcccb' }, // Light red
-  { name: 'Health', color: '#90ee90' }, // Light green
-  { name: 'Family', color: '#add8e6' }, // Light blue
-  { name: 'Spirituality', color: '#dda0dd' }, // Light purple
-  // Add more categories as needed
-];
-
-// Get the container for category buttons
-const categoryOptions = document.querySelector('.categoryOptions');
-
-// Function to create a category button
-function createCategoryButton(category) {
-  const button = document.createElement('button');
-  button.className = 'categoryBtn';
-  button.textContent = category.name;
-  button.style.backgroundColor = category.color; // Set the background color
-  button.setAttribute('data-category', category.name.toLowerCase()); // Add data attribute
-
-  // Add click event listener
-  button.addEventListener('click', () => {
-    // Remove the selected class from all buttons
-    document.querySelectorAll('.categoryBtn').forEach(btn => btn.classList.remove('selected'));
-
-    // Add the selected class to the clicked button
-    button.classList.add('selected');
-
-    // Optionally, save the selected category to a hidden input or variable
-    const selectedCategory = button.getAttribute('data-category');
-    console.log('Selected Category:', selectedCategory);
+  timeButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      timeButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+      timeInput.style.display =
+        button.id === "timeSelection" ? "inline" : "none";
+    });
   });
 
-  return button;
-}
+  // Category selection
+  const categories = [
+    { name: "Work", color: "#ffcccb" },
+    { name: "Health", color: "#90ee90" },
+    { name: "Family", color: "#add8e6" },
+    { name: "Spirituality", color: "#dda0dd" },
+  ];
 
-// Dynamically add category buttons to the form
-categories.forEach(category => {
-  const button = createCategoryButton(category);
-  categoryOptions.appendChild(button);
+  const categoryOptions = document.querySelector(".categoryOptions");
+  categories.forEach((category) => {
+    const button = createCategoryButton(category);
+    categoryOptions.appendChild(button);
+  });
+
+  function createCategoryButton(category) {
+    const button = document.createElement("button");
+    button.className = "categoryBtn";
+    button.textContent = category.name;
+    button.style.backgroundColor = category.color;
+    button.setAttribute("data-category", category.name.toLowerCase());
+
+    button.addEventListener("click", () => {
+      document
+        .querySelectorAll(".categoryBtn")
+        .forEach((btn) => btn.classList.remove("selected"));
+      button.classList.add("selected");
+    });
+
+    return button;
+  }
+
+  // Task management
+  const addTaskSubmitBtn = document.querySelector(".addTaskSubmitBtn");
+  const upcomingTasksDiv = document.querySelector(".upcoimgTasksDiv");
+
+  function deleteTask(taskItem, task) {
+    // Remove task from local storage
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const updatedTasks = tasks.filter((t) => t.name !== task.name);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+    // Remove task from UI
+    taskItem.remove();
+  }
+
+  function createTaskItem(task) {
+    const taskItem = document.createElement("div");
+    taskItem.className = "taskItem";
+
+    const taskTime = document.createElement("span");
+    taskTime.className = "taskTime";
+    taskTime.textContent = task.time || "Open";
+    taskItem.appendChild(taskTime);
+
+    const seperator = document.createElement("div");
+    seperator.className = "task-seperator";
+    taskItem.appendChild(seperator);
+
+    const taskName = document.createElement("span");
+    taskName.className = "taskName";
+    taskName.textContent = task.name;
+    taskItem.appendChild(taskName);
+
+    const priorityCircle = document.createElement("div");
+    priorityCircle.className = `priorityCircle ${task.priority}`;
+    taskItem.appendChild(priorityCircle);
+
+    const binIconContainer = document.createElement("div");
+    binIconContainer.className = "icon-container";
+
+    const binIcon = document.createElement("img");
+    binIcon.src = "../Images/bin_icon.png";
+    binIcon.alt = "Delete task icon";
+    binIconContainer.appendChild(binIcon);
+    taskItem.appendChild(binIconContainer);
+
+    binIcon.addEventListener("click", () => {
+      deleteTask(taskItem, task);
+    });
+
+    return taskItem;
+  }
+
+  function saveTasks(tasks) {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach((task) => {
+      const taskItem = createTaskItem(task);
+      upcomingTasksDiv.appendChild(taskItem);
+    });
+  }
+
+  loadTasks();
+
+  addTaskSubmitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const taskName = document.getElementById("taskName").value;
+    const taskDesc = document.getElementById("taskDesc").value;
+    const taskDate = document.getElementById("dateInput").value;
+    const taskTime = document.getElementById("timeInput").value;
+    const priority =
+      document
+        .querySelector(".priorityOptions button.active")
+        ?.id.replace("Btn", "") || "low";
+    const category =
+      document
+        .querySelector(".categoryBtn.selected")
+        ?.getAttribute("data-category") || "work";
+
+    if (!taskName || !taskDesc || !taskDate) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    const task = {
+      name: taskName,
+      description: taskDesc,
+      date: taskDate,
+      time: taskTime,
+      priority: priority,
+      category: category,
+    };
+
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push(task);
+    saveTasks(tasks);
+
+    const taskItem = createTaskItem(task);
+    upcomingTasksDiv.appendChild(taskItem);
+
+    document.getElementById("addTaskForm").reset();
+    document.getElementById("addTaskForm").style.display = "none";
+    document
+      .querySelectorAll(".priorityOptions button, .categoryBtn")
+      .forEach((btn) => btn.classList.remove("active", "selected"));
+  });
+
 });
