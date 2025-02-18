@@ -74,15 +74,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const addTaskBtn = document.querySelector(".addTaskButton");
   const addTaskForm = document.querySelector("#addTaskForm");
 
-  addTaskBtn.addEventListener("click", () => {
+  addTaskBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
     addTaskForm.style.display =
       addTaskForm.style.display === "flex" ? "none" : "flex";
+  });
+
+  addTaskForm.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (
+      !addTaskForm.contains(event.target) &&
+      !addTaskBtn.contains(event.target)
+    ) {
+      addTaskForm.style.display = "none";
+    }
   });
 
   // Priority selection
   const priorityButtons = document.querySelectorAll(".priorityOptions button");
   priorityButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
       priorityButtons.forEach((b) => b.classList.remove("active"));
       button.classList.add("active");
     });
@@ -95,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   timeButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
+      event.stopPropagation();
       timeButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
       timeInput.style.display =
@@ -123,7 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
     button.style.backgroundColor = category.color;
     button.setAttribute("data-category", category.name.toLowerCase());
 
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
       document
         .querySelectorAll(".categoryBtn")
         .forEach((btn) => btn.classList.remove("selected"));
@@ -140,13 +157,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function deleteTask(taskItem, task) {
     // Remove task from local storage
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const updatedTasks = tasks.filter((t) => t.name !== task.name);
+    const updatedTasks = tasks.filter((t) => t.id !== task.id);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
     // Remove task from UI
     taskItem.remove();
   }
 
+  // Function to craete a task item and add it in the Upcoming tasks div
   function createTaskItem(task) {
     const taskItem = document.createElement("div");
     taskItem.className = "taskItem";
@@ -194,6 +212,12 @@ document.addEventListener("DOMContentLoaded", function () {
     tasks.forEach((task) => {
       const taskItem = createTaskItem(task);
       upcomingTasksDiv.appendChild(taskItem);
+
+      // Check if task should be added to topTasksDiv
+      const diffDays = checkTaskDate(task);
+      if (diffDays <= 7) {
+        createTopTaskElement(task);
+      }
     });
   }
 
@@ -221,6 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const task = {
+      id: Date.now(),
       name: taskName,
       description: taskDesc,
       date: taskDate,
@@ -241,6 +266,55 @@ document.addEventListener("DOMContentLoaded", function () {
     document
       .querySelectorAll(".priorityOptions button, .categoryBtn")
       .forEach((btn) => btn.classList.remove("active", "selected"));
+
+    const diffDays = checkTaskDate(task);
+    if (diffDays <= 7) {
+      createTopTaskElement(task);
+    }
   });
 
+  // Function to add the tasks in topTasks Div
+
+  // Calculate the difference between the current date and the task date
+  function checkTaskDate(task) {
+    const currentDate = new Date();
+    const taskDate = new Date(task.date);
+    const diffTime = Math.abs(taskDate - currentDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return diffDays;
+  }
+
+  // Create an item in topTasks Div
+  const createTopTaskElement = (task) => {
+    const topTasksDiv = document.querySelector(".topTasksDiv");
+    const taskElement = document.createElement("div");
+    taskElement.className = "topTasksItem";
+    taskElement.dataset.taskId = task.id; 
+    taskElement.innerHTML = `
+      <h3>${task.name}</h3>
+      <p>${task.description}</p>
+      <p>Due Date: ${task.date}</p>
+      <p>Category: ${task.category}</p>
+      <div class="priorityCircle ${task.priority}"></div>
+    `;
+    topTasksDiv.appendChild(taskElement);
+  };
+
+  // Function to automatically check the whole tasks in json file everyday
+  const checkTasksDaily = () => {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach((task) => {
+      if (
+        daysUntil(task.date) <= 7 &&
+        !document.querySelector(`.topTask[data-task-id="${task.id}"]`)
+      ) {
+        createTopTaskElement(task);
+      }
+    });
+  };
+
+  // Call checkTasksDaily function every day
+  setInterval(checkTasksDaily, 24 * 60 * 60 * 1000); // 24 hours
+  window.onload = loadTasks;
 });
