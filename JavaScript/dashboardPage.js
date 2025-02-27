@@ -287,18 +287,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Create an item in topTasks Div
   const createTopTaskElement = (task) => {
-    const topTasksDiv = document.querySelector(".topTasksDiv");
+    const taskItemsContainerDiv = document.querySelector(".topTaskItemsDiv");
     const taskElement = document.createElement("div");
     taskElement.className = "topTasksItem";
-    taskElement.dataset.taskId = task.id; 
-    taskElement.innerHTML = `
-      <h3>${task.name}</h3>
-      <p>${task.description}</p>
-      <p>Due Date: ${task.date}</p>
-      <p>Category: ${task.category}</p>
-      <div class="priorityCircle ${task.priority}"></div>
-    `;
-    topTasksDiv.appendChild(taskElement);
+    taskElement.dataset.taskId = task.id;
+
+    // Create the content of the task element
+    const topTasksCategory = document.createElement("span");
+    topTasksCategory.className("topTasksCategory");
+    topTasksCategory.textContent = task.category;
+    taskElement.appendChild(topTasksCategory);
+
+    const topTasksDate = document.createElement("div");
+    topTasksDate.className("topTasksDate");
+    topTasksDate.textContent = task.date;
+    taskElement.appendChild(topTasksDate);
+
+    const topTasksName = document.createElement("span");
+    topTasksName.className("topTasksName");
+    topTasksName.textContent = task.name;
+    taskElement.appendChild(topTasksName);
+
+    const topTasksDesc = document.createElement("span");
+    topTasksDesc.className("topTasksDesc");
+    topTasksDesc.textContent = task.description;
+    taskElement.appendChild(topTasksDesc);
+
+    taskItemsContainerDiv.appendChild(taskElement);
   };
 
   // Function to automatically check the whole tasks in json file everyday
@@ -317,4 +332,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Call checkTasksDaily function every day
   setInterval(checkTasksDaily, 24 * 60 * 60 * 1000); // 24 hours
   window.onload = loadTasks;
+
+  // Code for integrating fullcalendar library
+  const calendareDiv = document.querySelector(".calander");
+  const calendar = new FullCalendar.Calendar(calendareDiv, {
+    initialView: "dayGridMonth",
+    headerToolbar: {
+      left: "prev",
+      center: "title",
+      right: "next"
+    },
+  });
+  calendar.render();
 });

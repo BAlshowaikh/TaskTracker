@@ -308,8 +308,20 @@ button {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
 }
+
+.calander {
+  width: 100%; 
+  height:80%;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.5em; 
+  color:#6b5fcf;
+  text-align: center;
+}
+
 
 .upcoimgTasksDiv {
   background-color: var(--card-background);
@@ -511,7 +523,7 @@ button {
   font-size: 18px;
 }
 
-/* Style for adding a new task div */
+/* Style for adding a new task div in upcoming tasks div*/
 .taskItem {
   display: flex;
   align-items: center;
@@ -579,3 +591,35 @@ button {
   cursor: pointer;
 }
 
+.topTasksItem{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.topTasksCategory, .topTasksDate {
+  display: inline-block; 
+  margin-right: 10px; 
+}
+
+.topTasksCategory{
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.topTasksDate{
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #F2F2F7;
+  font-size: 0.8em;
+}
+
+.topTasksName{
+  font-size:0.9em;
+}
+
+.topTasksDesc{
+  font-size:0.9em;
+  text-wrap: pretty;
+}
